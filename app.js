@@ -4,6 +4,8 @@ const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const errorHandlers = require('./handlers/errorHandlers');
+// import routes
+const products = require('./routes/products');
 
 // create our Express app
 const app = express();
@@ -28,6 +30,9 @@ app.use(
     extended: false,
   })
 );
+
+// api routes
+app.use('/api/products', products);
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
