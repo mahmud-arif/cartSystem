@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const errorHandlers = require('./handlers/errorHandlers');
 // import routes
 const products = require('./routes/products');
+const shop = require('./routes/cart');
 
 // create our Express app
 const app = express();
@@ -33,6 +34,7 @@ app.use(
 
 // api routes
 app.use('/api/products', products);
+app.use('/api/cart', products);
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
