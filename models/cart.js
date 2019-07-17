@@ -74,7 +74,7 @@ cartSchema.methods.subtructFromCart = function(product) {
 
 cartSchema.methods.removeFromCart = function(productId) {
   const updatedCartItems = this.cart.items.filter(
-    item => item.productId.toString() !== productId.toString()
+    item => item.productId._id.toString() !== productId.toString()
   );
   this.cart.items = updatedCartItems;
   return this.save();

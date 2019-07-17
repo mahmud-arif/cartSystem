@@ -26,6 +26,7 @@ exports.getCart = async (req, res, next) => {
 exports.addToCart = async (req, res, next) => {
   // console.log(typeof req.body.productId);
   const prodId = req.body.productId;
+  console.log(prodId);
   const product = await Product.findById(prodId);
   const result = await cart.addToCart(product);
   if (!result) {
@@ -59,6 +60,7 @@ exports.subtructFromCart = async (req, res, next) => {
 
 exports.postCartDeleteProduct = async (req, res, next) => {
   const prodId = req.body.productId;
+  console.log(prodId);
   const result = await cart.removeFromCart(prodId);
   if (!result) {
     return res.status(500).json({ error: 'unable to delet from product' });

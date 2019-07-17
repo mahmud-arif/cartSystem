@@ -2,15 +2,15 @@ const express = require('express');
 
 const router = express.Router();
 const { catchErrors } = require('../handlers/errorHandlers');
-const shopController = require('../controllers/cart');
+const cartController = require('../controllers/cart');
 
-router.get('/cart', catchErrors(shopController.getCart));
-router.post('/add-to-cart', catchErrors(shopController.addToCart));
-router.post('/sub-from-cart', catchErrors(shopController.subtructFromCart));
+router.get('/', catchErrors(cartController.getCart));
+router.post('/add-to-cart', catchErrors(cartController.addToCart));
+router.post('/sub-from-cart', catchErrors(cartController.subtructFromCart));
 router.post(
   '/remove-product',
-  catchErrors(shopController.postCartDeleteProduct)
+  catchErrors(cartController.postCartDeleteProduct)
 );
-router.post('/clearCart', catchErrors(shopController.clearCart));
+router.post('/clearCart', catchErrors(cartController.clearCart));
 
 module.exports = router;
