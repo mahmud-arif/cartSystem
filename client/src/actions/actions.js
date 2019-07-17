@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  INCRIMENT,
+  REMOVE,
   DECRIMENT,
   ADD_PRODUCT,
   LOAD_DATA,
@@ -14,7 +14,7 @@ import {
 
 export const addProduct = id => dispatch => {
   const data = { productId: id };
-  return axios.post('/api/shop/add-to-cart', data).then(result => {
+  return axios.post('/api/cart/add-to-cart', data).then(result => {
     const product = result.data.cart.items;
 
     return dispatch({
@@ -26,7 +26,7 @@ export const addProduct = id => dispatch => {
 
 export const subProduct = id => dispatch => {
   const data = { productId: id };
-  return axios.post('/api/shop/sub-from-cart', data).then(result => {
+  return axios.post('/api/cart/sub-from-cart', data).then(result => {
     const product = result.data.cart.items;
 
     return dispatch({
@@ -36,10 +36,21 @@ export const subProduct = id => dispatch => {
   });
 };
 
-export const loadData = () => dispatch =>
-  axios.get('/api/shop/cart').then(result => {
+export const removeProduct = id => dispatch => {
+  const data = { productId: id };
+  return axios.post('/api/cart/remove-product', data).then(result => {
     const product = result.data.cart.items;
-    // console.log(product);
+
+    return dispatch({
+      type: REMOVE,
+      payload: product,
+    });
+  });
+};
+export const loadData = () => dispatch =>
+  axios.get('/api/cart').then(result => {
+    const product = result.data.cart.items;
+    console.log(product);
     return dispatch({
       type: LOAD_DATA,
       payload: product,

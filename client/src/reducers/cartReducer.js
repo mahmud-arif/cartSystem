@@ -1,5 +1,9 @@
-import { ADD_PRODUCT, LOAD_DATA, SUB_PRODUCT } from '../actions/actionsType';
-import Items from '../component/Cart/items';
+import {
+  ADD_PRODUCT,
+  LOAD_DATA,
+  SUB_PRODUCT,
+  REMOVE,
+} from '../actions/actionsType';
 
 const initialState = {
   items: [],
@@ -13,6 +17,11 @@ export default function(state = initialState, action) {
         items: action.payload,
       };
     case SUB_PRODUCT:
+      return {
+        ...state,
+        items: action.payload,
+      };
+    case REMOVE:
       return {
         ...state,
         items: action.payload,
