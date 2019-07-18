@@ -31,7 +31,7 @@ exports.getDiscount = async (req, res, next) => {
   }
   res.json(result);
   const discountCodes = result[0];
-  console.log(discountCodes);
+  // console.log(discountCodes);
   discountCodes.isActive = false;
   const updateDoc = await DiscountCodes.findByIdAndUpdate(
     discountCodes._id,
