@@ -46,7 +46,8 @@ class OrderFrom extends Component {
       });
     }
     if (this.state.data !== null) {
-      isActiv = this.state.data[0].isActiv; 
+      isActiv = this.state.data[0].isActive; 
+      console.log(isActiv); 
       if (isActiv) {
         if (this.state.data[0].reductionType === 'byPercent') {
           sub = Math.floor(sum / this.state.data[0].reductionAmount);
