@@ -139,6 +139,7 @@ ___
 | api/promo/  | code,        |
 
 
-### promo code (YZZSE)
+### promo code (YZZSE, YZZSf) // you can use this code only once
+
 
 
