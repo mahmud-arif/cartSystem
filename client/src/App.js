@@ -8,7 +8,7 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <h1>hello world</h1>
+        <h1>SHOPING BAG</h1>
         <Items />
       </div>
     </Provider>

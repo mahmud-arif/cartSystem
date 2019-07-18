@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
   REMOVE,
-  DECRIMENT,
+  CLEAR,
   ADD_PRODUCT,
   LOAD_DATA,
   SUB_PRODUCT,
@@ -47,6 +47,16 @@ export const removeProduct = id => dispatch => {
     });
   });
 };
+
+export const clearCart = () => dispatch =>
+  axios.post('/api/cart/clearCart').then(result => {
+    const product = result.data.cart.items;
+
+    return dispatch({
+      type: CLEAR,
+      payload: product,
+    });
+  });
 export const loadData = () => dispatch =>
   axios.get('/api/cart').then(result => {
     const product = result.data.cart.items;

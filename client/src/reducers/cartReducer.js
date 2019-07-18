@@ -3,6 +3,7 @@ import {
   LOAD_DATA,
   SUB_PRODUCT,
   REMOVE,
+  CLEAR,
 } from '../actions/actionsType';
 
 const initialState = {
@@ -22,6 +23,11 @@ export default function(state = initialState, action) {
         items: action.payload,
       };
     case REMOVE:
+      return {
+        ...state,
+        items: action.payload,
+      };
+    case CLEAR:
       return {
         ...state,
         items: action.payload,
