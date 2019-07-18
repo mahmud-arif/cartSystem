@@ -37,6 +37,14 @@ app.use(
 app.use('/api/products', products);
 app.use('/api/cart', cart);
 app.use('/api/promo', promo);
+if (app.get('env') === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
@@ -45,14 +53,6 @@ app.use(errorHandlers.notFound);
 if (app.get('env') === 'development') {
   /* Development Error Handler - Prints stack trace */
   app.use(errorHandlers.developmentErrors);
-}
-if (app.get('env') === 'production') {
-  // Set static folder
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
 }
 
 // production error handler
