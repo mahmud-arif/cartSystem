@@ -37,6 +37,7 @@ app.use(
 app.use('/api/products', products);
 app.use('/api/cart', cart);
 app.use('/api/promo', promo);
+
 if (app.get('env') === 'production') {
   // Set static folder
   app.use(express.static('client/build'));
