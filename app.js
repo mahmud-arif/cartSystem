@@ -46,7 +46,7 @@ if (app.get('env') === 'development') {
   /* Development Error Handler - Prints stack trace */
   app.use(errorHandlers.developmentErrors);
 }
-if (process.env.NODE_ENV === 'production') {
+if (app.get('env') === 'production') {
   // Set static folder
   app.use(express.static('client/build'));
 
